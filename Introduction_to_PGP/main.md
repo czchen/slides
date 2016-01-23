@@ -48,3 +48,95 @@ The characteristics of digital signature are:
 # Generate a PGP Key
 
 *   Use [GNU Private Guard (GnuPG)](http://www.gnupg.org/) to generate a PGP key.
+
+---
+
+# GnuPG Terminology
+
+*   Master Key
+*   Subkey
+*   Usage
+*   Fingerprint
+*   Revoke Certificate
+*   Expired Date
+*   UID
+*   Key Server
+
+---
+
+# Master Key
+
+*   Key of key.
+    *   All subkey, UID are certified by master key.
+*   Only key that can certify other's key.
+*   Shall be stored in offline media.
+
+---
+
+# Subkey
+
+*   The key pairs managed by master key.
+*   Can be used to sign digital signature and/or encryption.
+
+---
+
+# Usage
+
+*   S: The key is good for signatures.
+*   E: The key is good for encryption.
+*   C: The key is good to certify other keys.
+    *   Only appears in master key.
+*   A: The key is good for authentication (no used).
+
+---
+
+# Suggested Configuration
+
+*   Master key is set to `C` only.
+*   One subkey is set to `S` only.
+*   One subkey is set to `E` only.
+
+---
+
+# Fingerprint
+
+*   Use to identify a key (e.g. EC9F 905D 866D BE46 A896  C827 BE0C 9242 03F4 552D).
+*   The last 8 characters is called short key id (e.g. 03F4 552D).
+*   The last 16 characters is called long key id (e.g. BE0C 9242 03F4 552D).
+*   Both short key id and long key id can be used to identify a key, but they
+    are not as good as fingerprint.
+
+---
+
+# Revoke Certificate
+
+*   Use to revoke a key.
+*   Once the key is revoked, it cannot be used anymore. Revoke certificate is
+    not reversible.
+
+---
+
+# Expired Date
+
+*   Can be adjust via master key.
+*   It is good to set an expired date so that a key will be expired if it is
+    lost and there is no revoke certificate.
+
+---
+
+# UID
+
+*   UID is your identity (name + email, photo).
+*   UID is certified by master key.
+*   A key can have many UID for different email.
+*   Generally it require 2 forms of government-issued photo ID to prove your
+    identity in key signing party.
+*   Others might reject to certify your key due to inproperly UID.
+
+---
+
+# Key Server
+
+*   Stores public keys for other to download.
+*   Once a key pair is generated, it shall be upload to key server for others to
+    download.
