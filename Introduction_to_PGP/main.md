@@ -39,12 +39,6 @@ The characteristics of digital signature are:
 
 ---
 
-# Key Signing Party
-
-*   An event at which people present their public keys to others in person, who, if they are confident the key actually belongs to the person who claims it, digitally sign the certificate containing that public key and the person's name, etc. (from [wiki](https://en.wikipedia.org/wiki/Key_signing_party))
-
----
-
 # Generate a PGP Key
 
 *   Use [GNU Private Guard (GnuPG)](http://www.gnupg.org/) to generate a PGP key.
@@ -55,7 +49,7 @@ The characteristics of digital signature are:
 
 *   Master Key
 *   Subkey
-*   Usage
+*   Capability
 *   Fingerprint
 *   Revoke Certificate
 *   Expired Date
@@ -80,7 +74,7 @@ The characteristics of digital signature are:
 
 ---
 
-# Usage
+# Capability
 
 *   S: The key is good for signatures.
 *   E: The key is good for encryption.
@@ -129,8 +123,7 @@ The characteristics of digital signature are:
 *   UID is your identity (name + email, photo).
 *   UID is certified by master key.
 *   A key can have many UID for different email.
-*   Generally it require 2 forms of government-issued photo ID to prove your
-    identity in key signing party.
+*   Generally it require 2 forms of government-issued photo ID to prove your identity in key signing party.
 *   Others might reject to certify your key due to inproperly UID.
 
 ---
@@ -138,5 +131,59 @@ The characteristics of digital signature are:
 # Key Server
 
 *   Stores public keys for other to download.
-*   Once a key pair is generated, it shall be upload to key server for others to
-    download.
+*   Once a key pair is generated, it shall be upload to key server for others to download.
+
+---
+
+# Example: Generate a PGP Key
+
+*   Use `gpg --gen-key --expert` to create a master key with only `certify capability.
+
+```sh
+% gpg --gen-key --expert
+gpg (GnuPG) 1.4.20; Copyright (C) 2015 Free Software Foundation, Inc.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+Please select what kind of key you want:
+   (1) RSA and RSA (default)
+   (2) DSA and Elgamal
+   (3) DSA (sign only)
+   (4) RSA (sign only)
+   (7) DSA (set your own capabilities)
+   (8) RSA (set your own capabilities)
+Your selection? 8
+```
+
+---
+
+# Example: Select Key Size
+
+*   Select the longest possible keysize to ensure its safety.
+
+```sh
+RSA keys may be between 1024 and 4096 bits long.
+What keysize do you want? (2048) 4096
+```
+
+---
+
+# Example: Set Expired Date
+
+*   Select properly expired date (1 year).
+
+```sh
+Please specify how long the key should be valid.
+         0 = key does not expire
+      <n>  = key expires in n days
+      <n>w = key expires in n weeks
+      <n>m = key expires in n months
+      <n>y = key expires in n years
+Key is valid for? (0) 1y
+```
+
+---
+
+# Key Signing Party
+
+*   An event at which people present their public keys to others in person, who, if they are confident the key actually belongs to the person who claims it, digitally sign the certificate containing that public key and the person's name, etc. (from [wiki](https://en.wikipedia.org/wiki/Key_signing_party))
