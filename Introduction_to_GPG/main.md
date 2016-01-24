@@ -28,7 +28,8 @@ The characteristics of digital signature are:
 # When to Use
 
 *   To verify a software downloaded in Internet.
-*   To store credential information likes password messenger.
+*   To store credential information likes password manager.
+*   To send encrypted message to other.
 
 ---
 
@@ -208,7 +209,7 @@ Key is valid for? (0) 1y
 
 *   Send the public key to key server / coordinator.
 *   Ensure your key fingerprint is correct.
-*   Bring beer (optional), and the government-issued photo ID. Ensure the name of UID match the name in government-issued photo ID.
+*   Bring ~~beer~~ the government-issued photo ID. Ensure the name of UID match the name in government-issued photo ID.
 
 ---
 
@@ -221,7 +222,7 @@ Key is valid for? (0) 1y
 # After Key Signing Party
 
 *   Download these keys that need to be certified (`gpg --recv-keys $KEYID`).
-*   Certify these keys ()`gpg --sign-key $KEYID`).
+*   Certify these keys (`gpg --sign-key $KEYID`).
 *   Export these keys (`gpg --armor -o $SIGNATURE --export $KEYID`).
 *   Encrypt these keys with their encryption key (`gpg -r $KEYID $SIGNATURE`).
 *   Email $SIGNATURE to its owner.
