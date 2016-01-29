@@ -1,4 +1,4 @@
-# Introduction of Debian
+# Introduction to Debian
 
 ChangZhuo Chen (陳昌倬) <czchen@debian.org>
 
