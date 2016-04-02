@@ -117,6 +117,11 @@ This slide is licensed under [CC-BY-SA 4.0](https://creativecommons.org/licenses
 *   Split build process into many `dh_???` helper scripts.
 *   Use `override_dh_???` to change helper script behavior.
 
+    ```
+    override_dh_auto_configure:
+        dh_auto_configure -- --includedir=/usr/include/$(DEB_HOST_MULTIARCH)
+    ```
+
 ---
 
 # Create Debian Package from Upstream Source
