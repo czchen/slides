@@ -161,7 +161,7 @@ References:
 
 ---
 
-# Example: Generate a GPG Key
+# Generate a GPG Key
 
 *   Use `gpg --gen-key --expert` to create a master key with only `certify capability`.
 
@@ -183,7 +183,7 @@ Your selection? 8
 
 ---
 
-# Example: Select Key Size
+# Select Key Size
 
 *   Select the longest possible keysize to ensure its safety.
 
@@ -194,7 +194,7 @@ What keysize do you want? (2048) 4096
 
 ---
 
-# Example: Set Expired Date
+# Set Expired Date
 
 *   Select properly expired date (e.g. 1 year).
 
@@ -263,23 +263,34 @@ Key is valid for? (0) 1y
 # Caff Configuration Using GMail
 
 *   Install required packages via `apt install signing-party msmtp`
-*   Add `.msmtprc` with the following content (See: https://wiki.debian.org/msmtp)
+*   Add the following configuration to `.caffrc` (https://wiki.debian.org/caff/msmtp):
 
-```
-defaults
-port 587
-tls on
-tls_trust_file /etc/ssl/certs/ca-certificates.crt
+    ```perl
+    $ENV{'PERL_MAILERS'} = 'sendmail:/usr/bin/msmtp';
+    $CONFIG{'mailer-send'} = ['sendmail'];
+    ```
 
-account gmail
-host smtp.gmail.com
-from <username>@gmail.com
-auth on
-user <username>
-passwordeval gpg --no-tty -q -d <path/to/encrypted/app_passwords>
+---
 
-account default : gmail
-```
+# Caff Configuration Using GMail (Cont.)
+
+*   Add the following configuration to `.msmtprc` (https://wiki.debian.org/msmtp)
+
+    ```
+    defaults
+    port 587
+    tls on
+    tls_trust_file /etc/ssl/certs/ca-certificates.crt
+
+    account gmail
+    host smtp.gmail.com
+    from <username>@gmail.com
+    auth on
+    user <username>
+    passwordeval gpg --no-tty -q -d <path/to/encrypted/app_passwords>
+
+    account default : gmail
+    ```
 
 ---
 
