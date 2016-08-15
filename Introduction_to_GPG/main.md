@@ -11,25 +11,38 @@
 
 ---
 
-# The Purpose of GPG
+# The Purposes of GPG
 
 *   To verify a digital signature of data.
+    *   Authentication
+    *   Integrity
+    *   Non-repudiation
 *   To send an encrypted data.
 
 ???
 
 The characteristics of digital signature are:
 *   Authentication
-*   Integrity
-*   Non-repudiation
+    *   A valid signature shows that the message was sent by the particular
+        user.
+*   Integrity:
+    *   No efficient way to modify a message and its signature to produce a new
+        message with a valid signature.
+*   Non-repudiation:
+    *   An entity that has signed some information cannot at a later time deny
+        having signed it.
+
+References:
+*   https://en.wikipedia.org/wiki/Digital_signature#Applications_of_digital_signatures
 
 ---
 
 # When to Use
 
-*   To verify a software downloaded in Internet.
+*   To verify a software downloaded from Internet.
+*   To send signed messages so other can verify it.
 *   To store credential information likes password manager.
-*   To send encrypted message to other.
+*   To send encrypted messages to others.
 
 ---
 
@@ -49,7 +62,8 @@ The characteristics of digital signature are:
 
 # Generate a GPG Key
 
-*   Use [GNU Private Guard (GnuPG)](http://www.gnupg.org/) to generate a GPG key.
+*   Use [GNU Private Guard (GnuPG)](http://www.gnupg.org/) to generate a GPG
+    key.
 
 ---
 
@@ -104,6 +118,9 @@ The characteristics of digital signature are:
 
 *   Use to identify a key (e.g. EC9F 905D 866D BE46 A896  C827 BE0C 9242 03F4 552D).
 *   The last 8 characters is called short key id (e.g. 03F4 552D).
+    *   Do NOT use it because it takes only 4 seconds to generate a colliding
+        32bit key id.
+    *   See: https://evil32.com/
 *   The last 16 characters is called long key id (e.g. BE0C 9242 03F4 552D).
 *   Both short key id and long key id can be used to identify a key, but they
     are not as good as fingerprint.
@@ -131,14 +148,15 @@ The characteristics of digital signature are:
 *   UID is your identity (name + email, photo).
 *   UID is certified by master key.
 *   A key can have many UID for different email.
-*   Generally it require 2 forms of government-issued photo ID to prove your identity in key signing party.
-*   Others might reject to certify your key due to inproperly UID.
+*   Generally it require 2 forms of government-issued photo ID to prove your
+    identity in key signing party.
+*   Others might reject to certify your key due to improperly UID.
 
 ---
 
 # Key Server
 
-*   Stores public keys for other to download.
+*   Stores public keys for others to download.
 *   Once a key pair is generated, it shall be upload to key server for others to download.
 
 ---
@@ -147,12 +165,8 @@ The characteristics of digital signature are:
 
 *   Use `gpg --gen-key --expert` to create a master key with only `certify capability`.
 
-```sh
-% gpg --gen-key --expert
-gpg (GnuPG) 1.4.20; Copyright (C) 2015 Free Software Foundation, Inc.
-This is free software: you are free to change and redistribute it.
-There is NO WARRANTY, to the extent permitted by law.
-
+```
+% gpg --full-gen-key --expert
 Please select what kind of key you want:
    (1) RSA and RSA (default)
    (2) DSA and Elgamal
@@ -160,6 +174,10 @@ Please select what kind of key you want:
    (4) RSA (sign only)
    (7) DSA (set your own capabilities)
    (8) RSA (set your own capabilities)
+   (9) ECC and ECC
+  (10) ECC (sign only)
+  (11) ECC (set your own capabilities)
+
 Your selection? 8
 ```
 
@@ -169,7 +187,7 @@ Your selection? 8
 
 *   Select the longest possible keysize to ensure its safety.
 
-```sh
+```
 RSA keys may be between 1024 and 4096 bits long.
 What keysize do you want? (2048) 4096
 ```
@@ -194,14 +212,18 @@ Key is valid for? (0) 1y
 
 # Key Exchange
 
-*   After GPG key is generated, it is essential to let others link you with your key.
-*   The easier way is to join key signing party.
+*   After GPG key is generated, it is essential to let others link you with your
+    key.
+*   The easiest way is to join key signing party.
 
 ---
 
 # Key Signing Party
 
-*   An event at which people present their public keys to others in person, who, if they are confident the key actually belongs to the person who claims it, digitally sign the certificate containing that public key and the person's name, etc. (from [wiki](https://en.wikipedia.org/wiki/Key_signing_party))
+*   An event at which people present their public keys to others in person, who,
+    if they are confident the key actually belongs to the person who claims it,
+    digitally sign the certificate containing that public key and the person's
+    name, etc. (from [wiki](https://en.wikipedia.org/wiki/Key_signing_party))
 
 ---
 
@@ -209,7 +231,8 @@ Key is valid for? (0) 1y
 
 *   Send the public key to key server / coordinator.
 *   Ensure your key fingerprint is correct.
-*   Bring ~~beer~~ the government-issued photo ID. Ensure the name of UID match the name in government-issued photo ID.
+*   Bring the government-issued photo ID. Ensure the name of UID match the name
+    in government-issued photo ID.
 
 ---
 
@@ -225,14 +248,38 @@ Key is valid for? (0) 1y
 *   Certify these keys (`gpg --sign-key $KEYID`).
 *   Export these keys (`gpg --armor -o $SIGNATURE --export $KEYID`).
 *   Encrypt these keys with their encryption key (`gpg -r $KEYID $SIGNATURE`).
-*   Email $SIGNATURE to its owner.
+*   Email `$SIGNATURE` to its owner.
 *   Remove all imported keys (`gpg --delete-key $KEYID`).
 
 ---
 
 # Caff
 
-*   In Debian based distro, there is a tool called `caff` in `signing-party` package that can do all the stuff.
+*   In Debian based distro, there is a tool called `caff` in `signing-party`
+    package that can do all the stuff.
+
+---
+
+# Caff Configuration Using GMail
+
+*   Install required packages via `apt install signing-party msmtp`
+*   Add `.msmtprc` with the following content (See: https://wiki.debian.org/msmtp)
+
+```
+defaults
+port 587
+tls on
+tls_trust_file /etc/ssl/certs/ca-certificates.crt
+
+account gmail
+host smtp.gmail.com
+from <username>@gmail.com
+auth on
+user <username>
+passwordeval gpg --no-tty -q -d <path/to/encrypted/app_passwords>
+
+account default : gmail
+```
 
 ---
 
