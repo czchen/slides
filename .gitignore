@@ -1,6 +1,7 @@
 *.aux
 *.bbl*
 *.bcf*
+*.bib.original
 *.blg
 *.fdb_latexmk
 *.fls
