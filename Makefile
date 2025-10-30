@@ -4,7 +4,7 @@
 build: fmt
 	latexmk -xelatex -interaction=nonstopmode *.tex
 
-.PHONY: fmt
-fmt:
+.PHONY: lint
+lint:
 	bibtex-tidy --modify --sort=key --sort-fields *.bib
 	tex-fmt *.tex
