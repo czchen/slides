@@ -48,7 +48,7 @@
 
 \newcommand*{\setupchinesebible}[1]{
   % 五經
-  \providebiblebook{#1}{Genesis}{創世紀}
+  \providebiblebook{#1}{Genesis}{創世記}
   \providebiblebook{#1}{Exodus}{出埃及記}
   \providebiblebook{#1}{Leviticus}{利未記}
   \providebiblebook{#1}{Numbers}{民數記}
@@ -62,12 +62,12 @@
   \providebiblebook{#1}{IKings}{列王紀上}
   \providebiblebook{#1}{IIKings}{列王紀下}
 
-  % 後先知書
+  % 後先知書 - 大先知書
   \providebiblebook{#1}{Isaiah}{以賽亞書}
   \providebiblebook{#1}{Jeremiah}{耶利米書}
   \providebiblebook{#1}{Ezekiel}{以西結書}
 
-  % 十二先知書
+  % 後先知書 - 十二先知書
   \providebiblebook{#1}{Hosea}{何西阿書}
   \providebiblebook{#1}{Joel}{約珥書}
   \providebiblebook{#1}{Amos}{阿摩司書}
@@ -162,6 +162,122 @@
 \setbiblestyle{chinese}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Chinese short style
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand*{\setupchinesebibleshort}[1]{
+  % 五經
+  \providebiblebook{#1}{Genesis}{創}
+  \providebiblebook{#1}{Exodus}{出}
+  \providebiblebook{#1}{Leviticus}{利}
+  \providebiblebook{#1}{Numbers}{民}
+  \providebiblebook{#1}{Deuteronomy}{申}
+
+  % 前先知書
+  \providebiblebook{#1}{Joshua}{書}
+  \providebiblebook{#1}{Judges}{士}
+  \providebiblebook{#1}{ISamuel}{撒上}
+  \providebiblebook{#1}{IISamuel}{撒下}
+  \providebiblebook{#1}{IKings}{王上}
+  \providebiblebook{#1}{IIKings}{王下}
+
+  % 後先知書 - 大先知書
+  \providebiblebook{#1}{Isaiah}{賽}
+  \providebiblebook{#1}{Jeremiah}{耶}
+  \providebiblebook{#1}{Ezekiel}{結}
+
+  % 後先知書 - 十二先知書
+  \providebiblebook{#1}{Hosea}{何}
+  \providebiblebook{#1}{Joel}{珥}
+  \providebiblebook{#1}{Amos}{摩}
+  \providebiblebook{#1}{Obadiah}{俄}
+  \providebiblebook{#1}{Jonah}{拿}
+  \providebiblebook{#1}{Micah}{彌}
+  \providebiblebook{#1}{Nahum}{鴻}
+  \providebiblebook{#1}{Habakkuk}{哈}
+  \providebiblebook{#1}{Zephaniah}{番}
+  \providebiblebook{#1}{Haggai}{該}
+  \providebiblebook{#1}{Zechariah}{亞}
+  \providebiblebook{#1}{Malachi}{瑪}
+
+  % 聖卷 - 詩歌書
+  \providebiblebook{#1}{Psalms}{詩}
+  \providebiblebook{#1}{Proverbs}{箴}
+  \providebiblebook{#1}{Job}{伯}
+
+  % 聖卷 - 節期書
+  \providebiblebook{#1}{SongofSongs}{歌}
+  \providebiblebook{#1}{Ruth}{得}
+  \providebiblebook{#1}{Lamentations}{哀}
+  \providebiblebook{#1}{Ecclesiastes}{傳}
+  \providebiblebook{#1}{Esther}{斯}
+
+  % 聖卷
+  \providebiblebook{#1}{Daniel}{但}
+  \providebiblebook{#1}{Ezra}{拉}
+  \providebiblebook{#1}{Nehemiah}{尼}
+  \providebiblebook{#1}{IChronicles}{代上}
+  \providebiblebook{#1}{IIChronicles}{代下}
+
+  % 次經
+  \providebiblebook{#1}{Tobit}{多}
+  \providebiblebook{#1}{Judith}{猶滴}
+  \providebiblebook{#1}{IMaccabees}{瑪上}
+  \providebiblebook{#1}{IIMaccabees}{瑪下}
+  \providebiblebook{#1}{Wisdom}{智}
+  \providebiblebook{#1}{Ecclesiasticus}{德}
+  \providebiblebook{#1}{Baruch}{巴}
+
+  % 福音書
+  \providebiblebook{#1}{Matthew}{太}
+  \providebiblebook{#1}{Mark}{可}
+  \providebiblebook{#1}{Luke}{路}
+  \providebiblebook{#1}{John}{約}
+  \providebiblebook{#1}{Acts}{徒}
+
+  % 保羅書信
+  \providebiblebook{#1}{Romans}{羅}
+  \providebiblebook{#1}{ICorinthians}{林前}
+  \providebiblebook{#1}{IICorinthians}{林多}
+  \providebiblebook{#1}{Galatians}{加}
+  \providebiblebook{#1}{Ephesians}{弗}
+  \providebiblebook{#1}{Philippians}{腓}
+  \providebiblebook{#1}{Colossians}{西}
+  \providebiblebook{#1}{IThessalonians}{帖前}
+  \providebiblebook{#1}{IIThessalonians}{帖後}
+  \providebiblebook{#1}{ITimothy}{提前}
+  \providebiblebook{#1}{IITimothy}{提後}
+  \providebiblebook{#1}{Titus}{多}
+  \providebiblebook{#1}{Philemon}{門}
+  \providebiblebook{#1}{Hebrews}{來}
+
+  % 其他書信
+  \providebiblebook{#1}{James}{雅}
+  \providebiblebook{#1}{IPeter}{彼前}
+  \providebiblebook{#1}{IIPeter}{彼後}
+  \providebiblebook{#1}{IJohn}{約一}
+  \providebiblebook{#1}{IIJohn}{約二}
+  \providebiblebook{#1}{IIIJohn}{約三}
+  \providebiblebook{#1}{Jude}{猶}
+
+  % 啟示錄
+  \providebiblebook{#1}{Revelation}{啟}
+}
+
+% Fix \textendash
+\makeatletter
+\providebiblestyle{chinese-short-text}{\standardbiblestyle{chinese-short-text}
+  {\ }{:}{; }{;}{,}{\textendash}
+  {\brm@number@arabic}{\brm@number@arabic}
+{#1}{#2}{#3}}
+\makeatother
+
+\setupchinesebibleshort{chinese-short-text}
+
+\providebiblegatewaystyle{chinese-short}{biblegateway-CUV}{chinese-short-text}
+\setupchinesebibleshort{chinese-short}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Hebrew style
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -181,12 +297,12 @@
   \providebiblebook{#1}{IKings}{\texthebrew{מְלָכִים א}}
   \providebiblebook{#1}{IIKings}{\texthebrew{מְלָכִים ב}}
 
-  % 後先知書
+  % 後先知書 - 大先知書
   \providebiblebook{#1}{Isaiah}{\texthebrew{יְשַׁעְיָהוּ}}
   \providebiblebook{#1}{Jeremiah}{\texthebrew{יִרְמְיָהוּ}}
   \providebiblebook{#1}{Ezekiel}{\texthebrew{יְחֶזְקֵאל}}
 
-  % 十二先知書
+  % 後先知書 - 十二先知書
   \providebiblebook{#1}{Hosea}{\texthebrew{הוֹשֵׁעַ}}
   \providebiblebook{#1}{Joel}{\texthebrew{יוֹאֵל}}
   \providebiblebook{#1}{Amos}{\texthebrew{עָמוֹס}}
@@ -237,22 +353,16 @@
 
   % 保羅書信
   \providebiblebook{#1}{Romans}{\texthebrew{אִגֶּרֶת לָרוֹמִיִּים}}
-  \providebiblebook{#1}{ICorinthians}{\texthebrew{אִגֶּרֶת רִאשׁוֹנָה
-  לָקוֹרִנְתִּיִּים}}
-  \providebiblebook{#1}{IICorinthians}{\texthebrew{אִגֶּרֶת שְׁנִיָּה
-  לָקוֹרִנְתִּיִּים}}
+  \providebiblebook{#1}{ICorinthians}{\texthebrew{אִגֶּרֶת רִאשׁוֹנָה לָקוֹרִנְתִּיִּים}}
+  \providebiblebook{#1}{IICorinthians}{\texthebrew{אִגֶּרֶת שְׁנִיָּה לָקוֹרִנְתִּיִּים}}
   \providebiblebook{#1}{Galatians}{\texthebrew{אִגֶּרֶת לַגַּלָטִים}}
   \providebiblebook{#1}{Ephesians}{\texthebrew{אִגֶּרֶת לָאֶפֶסִיִּים}}
   \providebiblebook{#1}{Philippians}{\texthebrew{אִגֶּרֶת לַפִילִפִּיִּים}}
   \providebiblebook{#1}{Colossians}{\texthebrew{אִגֶּרֶת לַקּוֹלוֹסִיִּים}}
-  \providebiblebook{#1}{IThessalonians}{\texthebrew{אִגֶּרֶת
-  רִאשׁוֹנָה לַתֶּסָּלוֹנִיקִים}}
-  \providebiblebook{#1}{IIThessalonians}{\texthebrew{אִגֶּרֶת
-  שְׁנִיָּה לַתֶּסָּלוֹנִיקִים}}
-  \providebiblebook{#1}{ITimothy}{\texthebrew{אִגֶּרֶת רִאשׁוֹנָה
-  לְטִימוֹתֵיאוֹס}}
-  \providebiblebook{#1}{IITimothy}{\texthebrew{אִגֶּרֶת שְׁנִיָּה
-  לְטִימוֹתֵיאוֹס}}
+  \providebiblebook{#1}{IThessalonians}{\texthebrew{אִגֶּרֶת רִאשׁוֹנָה לַתֶּסָּלוֹנִיקִים}}
+  \providebiblebook{#1}{IIThessalonians}{\texthebrew{אִגֶּרֶת שְׁנִיָּה לַתֶּסָּלוֹנִיקִים}}
+  \providebiblebook{#1}{ITimothy}{\texthebrew{אִגֶּרֶת רִאשׁוֹנָה לְטִימוֹתֵיאוֹס}}
+  \providebiblebook{#1}{IITimothy}{\texthebrew{אִגֶּרֶת שְׁנִיָּה לְטִימוֹתֵיאוֹס}}
   \providebiblebook{#1}{Titus}{\texthebrew{אִגֶּרֶת לְטִיטוֹס}}
   \providebiblebook{#1}{Philemon}{\texthebrew{אִגֶּרֶת לְפִילֵימוֹן}}
   \providebiblebook{#1}{Hebrews}{\texthebrew{אִגֶּרֶת לָעִבְרִיִּים}}
@@ -287,6 +397,12 @@
 \makeatletter
 \newcommand{\biblerefhebrew}[1]{\brm@bibleref{hebrew}{#1}}
 \makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Table
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{booktabs}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Macros
@@ -340,10 +456,8 @@
 \end{frame}
 
 \begin{frame}{耶和華的節期 \texthebrew{מוֹעֲדֵי יְהוָה}}
-  \begin{hebrew}וַיְדַבֵּר יְהוָה אֶל־מֹשֶׁה לֵּאמֹר׃ דַּבֵּר
-    אֶל־בְּנֵי יִשְׂרָאֵל וְאָמַרְתָּ אֲלֵהֶם \alert{מוֹעֲדֵי יְהוָה}
-    אֲשֶׁר־תִּקְרְאוּ אֹתָם מִקְרָאֵי קֹדֶשׁ \alert{אֵלֶּה הֵם
-    מוֹעֲדָי׃} (\biblerefhebrew{Lv 23:1-2})
+  \begin{hebrew}
+    וַיְדַבֵּר יְהוָה אֶל־מֹשֶׁה לֵּאמֹר׃ דַּבֵּר אֶל־בְּנֵי יִשְׂרָאֵל וְאָמַרְתָּ אֲלֵהֶם \alert{מוֹעֲדֵי יְהוָה} אֲשֶׁר־תִּקְרְאוּ אֹתָם מִקְרָאֵי קֹדֶשׁ \alert{אֵלֶּה הֵם מוֹעֲדָי׃} (\biblerefhebrew{Lv 23:1-2})
   \end{hebrew}\parvspace
   耶和華對摩西說：「你曉諭以色列人說：\alert{耶和華的節期}，你們要宣告為聖會的節期。\alert{(這些就是我的節期)} (\bibleref{Lv 23:1-2})\parvspace
   \begin{itemize}
@@ -353,8 +467,7 @@
 
 \begin{frame}{做見證的節期}
   \begin{itemize}
-    \item 節期 \texthebrew{מוֹעֵד}\ 的字根是
-      \texthebrew{יעד}\ ，其他相同字根的字有\parencite{節期的功能}：
+    \item 節期 \texthebrew{מוֹעֵד}\ 的字根是 \texthebrew{יעד}\ ，其他相同字根的字有\parencite{節期的功能}：
       \begin{itemize}
         \item \texthebrew{יַעַד}\ :目的、目的地
         \item \texthebrew{יִעֵד}\ :指定、命定
@@ -363,8 +476,14 @@
         \item \texthebrew{עֵדָה}\ :會眾
         \item \texthebrew{אֹהֶל מוֹעֵד}\ :會幕
       \end{itemize}
-    \item
-      \alert{節期}，就是一群擁有\alert{同一目標}的信仰社群，為著\alert{共同的使命/呼召}，在\alert{特定的時間}，在確切的地點，聚集一處，來\alert{一同見證}過去到現在所經歷一切所有\alert{集體民族}的神聖經驗\parencite{節期的功能}。
+    \item \alert{節期}，就是一群擁有\alert{同一目標}的信仰社群，為著\alert{共同的使命/呼召}，在\alert{特定的時間}，在確切的地點，聚集一處，來\alert{一同見證}過去到現在所經歷一切所有\alert{集體民族}的神聖經驗\parencite{節期的功能}。
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{節期的設立}
+  神說：「天上要有光體，可以分晝夜，作記號，\alert{定節令 (\texthebrew{וּלְמוֹעֲדִים})}、日子、年歲，\textellipsis{}有晚上，有早晨，是\alert{第四日}。(\bibleref{Gn 1:14,19})
+  \begin{itemize}
+    \item 節期在\alert{第四日}設立。
   \end{itemize}
 \end{frame}
 
@@ -401,7 +520,34 @@
     \item 希伯來文中，月 \texthebrew{חֹדֶשׁ}\ 的字根是更新
       \texthebrew{חָדַשׁ}\ ，月的開始始於\alert{新月第一個可見之日}。
     \item 一個月為 \alert{29 或 30 天}。
+    \item 聖經中的月份，大部分是直接用數字，少部份用名字。
   \end{itemize}
+\end{frame}
+
+\begin{frame}{}
+  \begingroup
+  \setbiblestyle{chinese-short}
+  \centering
+  \begin{tabular}{cl}
+    \toprule
+    名稱 & 來源 \\
+    \midrule
+    亞比月(\texthebrew{אָבִיב})/尼散月(\texthebrew{נִיסָן}) & \bibleref{Ex 12:2-37; 13:4; Ne 2:1; Est 3:7} \\
+    西弗月(\texthebrew{זִו})/伊亞爾月(\texthebrew{אִיָּר}) & \bibleref{1K 6:1} \\
+    西彎月(\texthebrew{סִיוָן}) & \bibleref{Est 8:9} \\
+    搭模斯月(\texthebrew{תַּמּוּז}) & \bibleref{Ezk 8:14}? \\
+    埃波月(\texthebrew{אָב}) & \\
+    以祿月(\texthebrew{אֱלוּל}) & \bibleref{Ne 6:15} \\
+    以他念月(\texthebrew{אֵתָנִים})/提斯利月(\texthebrew{תִּשְׁרֵי}) & \bibleref{1K 8:2} \\
+    布勒月(\texthebrew{בּוּל}) & \bibleref{1K 6:38} \\
+    基斯流月(\texthebrew{כִּסְלֵו}) & \bibleref{Zc 7:1} \\
+    提別月 (\texthebrew{טֵבֵת}) & \bibleref{Est 2:16} \\
+    細罷特月 (\texthebrew{שְׁבָט}) & \bibleref{Zc 1:7} \\
+    亞達月 (\texthebrew{אֲדָר}) & \bibleref{Est 3:7} \\
+    第二亞達月 (\texthebrew{אֲדָר ב׳}/\texthebrew{אֲדָר שֵׁנִי}/\texthebrew{וְאׇדָר}) & \\
+    \bottomrule
+  \end{tabular}
+  \endgroup
 \end{frame}
 
 \begin{frame}{聖經中的年}
@@ -771,8 +917,8 @@
     \item 3/7: 摩西在七七節領受十戒 (\bibleref{Ex 19; 20:1-17})\parencite{TenCommandmentsOnShavuot}
     \item 3/7\textendash\ 4/17:摩西在山中\alert{四十晝夜} (\bibleref{Ex 24:18; Dt 9:11})。
     \item 4/17: 摩西下山打碎石板 (\bibleref{Ex 32:19; Dt 9:15-17})。
-    \item 4/18\textendash\ 5/28: 第二天，摩西上山贖罪\alert{四十晝夜} (\bibleref{Ex 32:30; Dt 9:18,25})。
-    \item 5/29: 清晨起來，摩西拿兩塊石板上西奈山 (\bibleref{Ex 34:4; Dt 10:3})。
+    \item 4/18\textendash\ 5/28: \alert{第二天}，摩西上山贖罪\alert{四十晝夜} (\bibleref{Ex 32:30; Dt 9:18,25})。
+    \item 5/29: \alert{清晨起來}，摩西拿兩塊石板上西奈山 (\bibleref{Ex 34:4; Dt 10:3})。
     \item 6/1\textendash\ \alert{7/10}: 摩西在山上\alert{四十晝夜}重新立約 (\bibleref{Ex 34:28; Dt 10:10})。
   \end{itemize}
 \end{frame}
