@@ -1,7 +1,7 @@
 .DEFAULT_GOAL:=build
 
 .PHONY: build
-build: fmt
+build: lint
 	latexmk -xelatex -interaction=nonstopmode *.tex
 
 .PHONY: lint
