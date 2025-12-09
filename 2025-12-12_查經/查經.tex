@@ -1,0 +1,222 @@
+\documentclass{beamer}
+
+\usetheme{CambridgeUS}
+\usecolortheme{orchid}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Fonts
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{polyglossia}
+\setmainlanguage{chinese}
+
+\usepackage{fontspec}
+\usefonttheme{professionalfonts}
+
+\newfontfamily\chinesefont{Noto Sans CJK TC}
+\newfontfamily\cjkfontsf{Noto Sans CJK TC}
+\newfontfamily\cjkfonttt{Noto Sans CJK TC}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Bible
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{bibleref-mouth}
+\providebiblebookalias{Psalms}{Psalm} % Support Psalm as alias
+
+\newcommand*{\setupchinesebible}[1]{
+  % 五經
+  \providebiblebook{#1}{Genesis}{創世記}
+  \providebiblebook{#1}{Exodus}{出埃及記}
+  \providebiblebook{#1}{Leviticus}{利未記}
+  \providebiblebook{#1}{Numbers}{民數記}
+  \providebiblebook{#1}{Deuteronomy}{申命記}
+
+  % 前先知書
+  \providebiblebook{#1}{Joshua}{約書亞記}
+  \providebiblebook{#1}{Judges}{士師記}
+  \providebiblebook{#1}{ISamuel}{撒母耳記上}
+  \providebiblebook{#1}{IISamuel}{撒母耳記下}
+  \providebiblebook{#1}{IKings}{列王紀上}
+  \providebiblebook{#1}{IIKings}{列王紀下}
+
+  % 後先知書 - 大先知書
+  \providebiblebook{#1}{Isaiah}{以賽亞書}
+  \providebiblebook{#1}{Jeremiah}{耶利米書}
+  \providebiblebook{#1}{Ezekiel}{以西結書}
+
+  % 後先知書 - 十二先知書
+  \providebiblebook{#1}{Hosea}{何西阿書}
+  \providebiblebook{#1}{Joel}{約珥書}
+  \providebiblebook{#1}{Amos}{阿摩司書}
+  \providebiblebook{#1}{Obadiah}{俄巴底亞書}
+  \providebiblebook{#1}{Jonah}{約拿書}
+  \providebiblebook{#1}{Micah}{彌迦書}
+  \providebiblebook{#1}{Nahum}{那鴻書}
+  \providebiblebook{#1}{Habakkuk}{哈巴谷書}
+  \providebiblebook{#1}{Zephaniah}{西番雅書}
+  \providebiblebook{#1}{Haggai}{哈該書}
+  \providebiblebook{#1}{Zechariah}{撒迦利亞書}
+  \providebiblebook{#1}{Malachi}{瑪拉基書}
+
+  % 聖卷 - 詩歌書
+  \providebiblebook{#1}{Psalms}{詩篇}
+  \providebiblebook{#1}{Proverbs}{箴言}
+  \providebiblebook{#1}{Job}{約伯記}
+
+  % 聖卷 - 節期書
+  \providebiblebook{#1}{SongofSongs}{雅歌}
+  \providebiblebook{#1}{Ruth}{路得記}
+  \providebiblebook{#1}{Lamentations}{耶利米哀歌}
+  \providebiblebook{#1}{Ecclesiastes}{傳道書}
+  \providebiblebook{#1}{Esther}{以斯帖記}
+
+  % 聖卷
+  \providebiblebook{#1}{Daniel}{但以理書}
+  \providebiblebook{#1}{Ezra}{以斯拉記}
+  \providebiblebook{#1}{Nehemiah}{尼希米記}
+  \providebiblebook{#1}{IChronicles}{歷代志上}
+  \providebiblebook{#1}{IIChronicles}{歷代志下}
+
+  % 次經
+  \providebiblebook{#1}{Tobit}{多俾亞傳}
+  \providebiblebook{#1}{Judith}{友弟德傳}
+  \providebiblebook{#1}{IMaccabees}{瑪加伯上}
+  \providebiblebook{#1}{IIMaccabees}{瑪加伯下}
+  \providebiblebook{#1}{Wisdom}{智慧篇}
+  \providebiblebook{#1}{Ecclesiasticus}{德訓篇}
+  \providebiblebook{#1}{Baruch}{巴錄書}
+
+  % 福音書
+  \providebiblebook{#1}{Matthew}{馬太福音}
+  \providebiblebook{#1}{Mark}{馬可福音}
+  \providebiblebook{#1}{Luke}{路加福音}
+  \providebiblebook{#1}{John}{約翰福音}
+  \providebiblebook{#1}{Acts}{使徒行傳}
+
+  % 保羅書信
+  \providebiblebook{#1}{Romans}{羅馬書}
+  \providebiblebook{#1}{ICorinthians}{哥林多前書}
+  \providebiblebook{#1}{IICorinthians}{哥林多後書}
+  \providebiblebook{#1}{Galatians}{加拉太書}
+  \providebiblebook{#1}{Ephesians}{以弗所書}
+  \providebiblebook{#1}{Philippians}{腓立比書}
+  \providebiblebook{#1}{Colossians}{歌羅西書}
+  \providebiblebook{#1}{IThessalonians}{帖撒羅尼迦前書}
+  \providebiblebook{#1}{IIThessalonians}{帖撒羅尼迦後書}
+  \providebiblebook{#1}{ITimothy}{提摩太前書}
+  \providebiblebook{#1}{IITimothy}{提摩太後書}
+  \providebiblebook{#1}{Titus}{提多書}
+  \providebiblebook{#1}{Philemon}{腓利門書}
+  \providebiblebook{#1}{Hebrews}{希伯來書}
+
+  % 其他書信
+  \providebiblebook{#1}{James}{雅各書}
+  \providebiblebook{#1}{IPeter}{彼得前書}
+  \providebiblebook{#1}{IIPeter}{彼得後書}
+  \providebiblebook{#1}{IJohn}{約翰一書}
+  \providebiblebook{#1}{IIJohn}{約翰二書}
+  \providebiblebook{#1}{IIIJohn}{約翰三書}
+  \providebiblebook{#1}{Jude}{猶大書}
+
+  % 啟示錄
+  \providebiblebook{#1}{Revelation}{啟示錄}
+}
+
+% Fix \textendash
+\makeatletter
+\providebiblestyle{chinese-text}{\standardbiblestyle{chinese-text}
+  {\ }{:}{; }{;}{,}{\textendash}
+  {\brm@number@arabic}{\brm@number@arabic}
+{#1}{#2}{#3}}
+\makeatother
+
+\setupchinesebible{chinese-text}
+
+\providebiblegatewayurl{biblegateway-CUV}{CUV}
+\providebiblegatewaystyle{chinese}{biblegateway-CUV}{chinese-text}
+\setupchinesebible{chinese}
+
+\setbiblestyle{chinese}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Misc
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{信友團契 2025 查經 Lesson 12}
+\subtitle{\bibleref{2Th 3:1-18}：按規矩而行}
+\date{2025-12-12}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}
+  \frametitle{\bibleref{2Th 3:1-9}}
+  \textbf{1}\ 弟兄們，我還有話說，請你們為我們禱告，好叫主的道理快快行開，得著榮耀，正如在你們中間一樣。\textbf{2}\ 也叫我們脫離無理之惡人的手，因為人不都是有信心。\textbf{3}\ 但主是信實的，要堅固你們，保護你們脫離那惡者〔或作：脫離兇惡〕。\textbf{4}\ 我們靠主深信，你們現在是遵行我們所吩咐的，後來也必要遵行。\textbf{5}\ 願主引導你們的心，叫你們愛神，並學基督的忍耐。\textbf{6}\ 弟兄們，我們奉主耶穌基督的名吩咐你們，凡有弟兄不按規矩而行，不遵守從我們所受的教訓，就當遠離他。\textbf{7}\ 你們自己原知道應當怎樣效法我們，因為我們在你們中間，未嘗不按規矩而行。\textbf{8}\ 也未嘗白吃人的飯，倒是辛苦勞碌，晝夜作工，免得叫你們一人受累。\textbf{9}\ 這並不是因我們沒有權柄，乃是要給你們作榜樣，叫你們效法我們。
+\end{frame}
+
+\begin{frame}
+  \frametitle{\bibleref{2Th 3:10-18}}
+  \textbf{10}\ 我們在你們那裡的時候，曾吩咐你們說，若有人不肯作工，就不可吃飯。\textbf{11}\ 因我們聽說，在你們中間有人不按規矩而行，甚麼工都不作，反倒專管閒事。\textbf{12}\ 我們靠主耶穌基督，吩咐勸戒這樣的人，要安靜作工，吃自己的飯。\textbf{13}\ 弟兄們，你們行善不可喪志。\textbf{14}\ 若有人不聽從我們這信上的話，要記下他，不和他交往，叫他自覺羞愧。\textbf{15}\ 但不要以他為仇人，要勸他如弟兄。\textbf{16}\ 願賜平安的主，隨時隨事親自給你們平安！願主常與你們眾人同在！\textbf{17}\ 我保羅親筆問你們安·凡我的信都以此為記，我的筆跡就是這樣。\textbf{18}\ 願我們主耶穌基督的恩，常與你們眾人同在！
+\end{frame}
+
+\begin{frame}
+  \frametitle{討論問題 Q1，Q2，Q3}
+  \textbf{1}\ 弟兄們，我還有話說，請你們為我們禱告，好叫主的道理快快行開，得著榮耀，正如在你們中間一樣。\textbf{2}\ 也叫我們脫離無理之惡人的手，因為人不都是有信心。
+  \begin{itemize}
+    \item \textbf{Q1}\ 根據帖後 3:1-2，經文說到保羅指的「惡人」是誰？
+    \item \textbf{Q2}\ 根據帖後 3:1-2，保羅在第 1 節請求為他們禱告，求「主的道快快行開，得著榮耀」。對你來說，在台北這個城市，你認為「主的道」在哪些方面最需要「行開」和「得榮耀」？
+    \item \textbf{Q3}\ 根據帖後 3:1-2，保羅期望帖撒羅尼迦人在哪兩方面的事情上為他禱告？
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{討論問題 Q4，Q5}
+  \textbf{3}\ 但主是信實的，要堅固你們，保護你們脫離那惡者〔或作：脫離兇惡〕。\textbf{4}\ 我們靠主深信，你們現在是遵行我們所吩咐的，後來也必要遵行。\textbf{5}\ 願主引導你們的心，叫你們愛神，並學基督的忍耐。\textbf{6}\ 弟兄們，我們奉主耶穌基督的名吩咐你們，凡有弟兄不按規矩而行，不遵守從我們所受的教訓，就當遠離他。
+  \begin{itemize}
+    \item \textbf{Q4}\ 根據帖後 3:3-5，當保羅請求帖撒羅尼迦人為他禱告時，他如何表達他在主裡的信心？
+    \item \textbf{Q5}\ 據帖後 3:6，保羅用很重的語氣說：「奉主耶穌基督的名吩咐你們，遠離每一位不按規矩而行，也不遵守所受傳統的弟兄」。在職場或團契裡，我們有沒有看過「不按規矩而行」的人？這會帶來什麼影響？
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{討論問題 Q6，Q7，Q8，Q12}
+  \textbf{7}\ 你們自己原知道應當怎樣效法我們，因為我們在你們中間，未嘗不按規矩而行。\textbf{8}\ 也未嘗白吃人的飯，倒是辛苦勞碌，晝夜作工，免得叫你們一人受累。\textbf{9}\ 這並不是因我們沒有權柄，乃是要給你們作榜樣，叫你們效法我們。
+
+  \begin{itemize}
+    \item \textbf{Q6}\ 保羅說「你們卻要效法我們」（3:7,9）。在團契裡，我們有沒有活出讓別人可以 「效法」的見證？尤其在「工作態度，金錢觀，時間管理上？
+    \item \textbf{Q7}\ 據帖後 3:8-9，保羅說自己「在你們那裡的時候，並沒有白吃人的飯……總要勞力，親手做工」。保羅為什麼特別強調「不白吃飯」？這對我們今天的職場基督徒有什麼提醒？
+    \item \textbf{Q8}\ 據帖後 3:7-9，保羅如何以身作則，說明對待工作的正確態度？
+    \item \textbf{Q12}\ 據帖後 3:8，保羅提到他們親自「晝夜做工，辛勤勞碌」來樹立榜樣。在你的工作領域或服事中，你願意讓別人看到你的哪些工作態度作為「按規矩而行」的榜樣？
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{討論問題 Q9}
+  \textbf{6}\ 弟兄們，我們奉主耶穌基督的名吩咐你們，凡有弟兄不按規矩而行，不遵守從我們所受的教訓，就當遠離他。\textellipsis{}\textbf{14}\ 若有人不聽從我們這信上的話，要記下他，不和他交往，叫他自覺羞愧。\textbf{15}\ 但不要以他為仇人，要勸他如弟兄。
+  \begin{itemize}
+    \item \textbf{Q9}\ 保羅對這群「不做工」的人，既說要「遠離」（3:6,14），又說「不可當仇敵，乃要勸他如兄弟」（3:15）。你覺得這兩件事要怎麼同時做到？有沒有實際可以操作的做法？
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{討論問題 Q10，Q13}
+  \textbf{12}\ 我們靠主耶穌基督，吩咐勸戒這樣的人，要安靜作工，吃自己的飯。\textbf{13}\ 弟兄們，你們行善不可喪志。
+  \begin{itemize}
+    \item \textbf{Q10}\ 據帖後 3:12，保羅對不工作的人發出一個命令：「要安靜做工，吃自己的飯」。你如何平衡「努力工作」與「安靜」這兩個看似矛盾的要求？在你的職場/生活，如何實踐「安靜做工」？
+    \item \textbf{Q13}\ 據帖後 3:13，保羅勸勉信徒「你們行善不可喪志」。在教會團契生活中，你做過哪些「善事」（例如：服事、關心人）卻讓你感到喪志（疲憊、不被感謝、或沒有看到果效）？回想這些事情，你有什麼學習的心得？
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{討論問題 Q11，Q14}
+  \begin{itemize}
+    \item \textbf{Q11}\ 讀完這一章之後，未來三個月，你想在「忠心工作＋愛心管教」這件事上，有哪一個具體的行動改變計畫？
+    \item \textbf{Q14}\ 請分享今天的查經經文中你最有感動和領受的經文。
+  \end{itemize}
+\end{frame}
+
+\end{document}
