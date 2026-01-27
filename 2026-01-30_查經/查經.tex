@@ -13,12 +13,21 @@
 \usepackage{fontspec}
 \usefonttheme{professionalfonts}
 
+\usepackage[normalem]{ulem}
+
 \newfontfamily\chinesefont{Noto Sans CJK TC}
 \newfontfamily\cjkfontsf{Noto Sans CJK TC}
 \newfontfamily\cjkfonttt{Noto Sans CJK TC}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Bible
+% References
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[backend=biber,style=numeric,sorting=none,sortcites=true]{biblatex}
+\addbibresource{查經.bib}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Bible References
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage{bibleref-mouth}
@@ -140,12 +149,6 @@
 \setbiblestyle{chinese}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Misc
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\usepackage[normalem]{ulem}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Content
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -160,11 +163,15 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{\bibleref{Nb 1:1-16}}
-  \textbf{1}\ 接着上主在\uline{西奈}曠野的會幕中對\uline{摩西}說話，這是在\uline{以色列人}出\uline{埃及}地之後第二年的二月一日。他說：
+  \frametitle{\bibleref{Nb 1:1-5}}
+  \textbf{1}\ 接着，上主在\uline{西奈}曠野的會幕中對\uline{摩西}說話，這是在\uline{以色列人}出\uline{埃及}地之後第二年的二月一日。他說：
   \textbf{2}\ 「你要按宗族、按父家登記\uline{以色列}全會眾的人數，所有男丁都按名字的數目一一登記。
   \textbf{3}\ 在\uline{以色列}中凡是二十歲以上、能出去作戰的，你和\uline{亞倫}都要按着軍隊數點他們。
   \textbf{4}\ 每支派還要有一人與你們一起，那人須是他父家的首領。
+\end{frame}
+
+\begin{frame}
+  \frametitle{\bibleref{Nb 1:5-16}}
   \textbf{5}\ 這些就是與你們站在一起之人的名字：屬\uline{呂便}的，是\uline{示丟珥}的兒子\uline{以利蓿}；
   \textbf{6}\ 屬\uline{西緬}的，是\uline{蘇利沙代}的兒子\uline{示路蔑}；
   \textbf{7}\ 屬\uline{猶大}的，是\uline{亞米拿達}的兒子\uline{拿順}；
@@ -181,9 +188,31 @@
 
 \begin{frame}
   \frametitle{\bibleref{Nb 1:17-19}}
-  \textbf{17}\ 摩西和亞倫帶着這些記名的人，
+  \textbf{17}\ \uline{摩西}和\uline{亞倫}帶着這些記名的人，
   \textbf{18}\ 在二月一日聚集了全會眾，按宗族、按父家，將二十歲以上的人，按名字的數目一一登記。
-  \textbf{19}\ 照上主所吩咐摩西的，他在西奈曠野數點了他們。
+  \textbf{19}\ 照上主所吩咐\uline{摩西}的，他在\uline{西奈}曠野數點了他們。
+\end{frame}
+
+\begin{frame}
+  \frametitle{前情提要 - \bibleref{Nb 24-40}的交錯對稱\parencite{Chiasm_Exodus_24-40}}
+  \begin{itemize}
+    \item \textbf{A} 上主的榮耀停駐在\uline{西奈}山頂 (\bibleref{Ex 24:12-18})
+    \item \textbf{B} 會幕的樣式和祭師的條例 (\bibleref{Nb 25-30})
+    \item \textbf{C} 會幕的技工和材料 (\bibleref{Ex 31:1-11})
+    \item \textbf{D} 安息日的規定 (\bibleref{Ex 31:12-17})
+    \item \textbf{E} 背約(金牛犢事件) (\bibleref{Ex 31:18-33:11})
+    \item \textbf{X} 上主的榮耀 (\bibleref{Ex 33:12-34:9})
+    \item \textbf{E`} 立約 (\bibleref{Ex 34:10;35})
+    \item \textbf{D`} 安息日的規定 (\bibleref{Ex 35:1-3})
+    \item \textbf{C`} 會幕的技工和材料 (\bibleref{Ex 35:4-36:7})
+    \item \textbf{B`} 建造會幕和祭司的服裝 (\bibleref{Ex 36:8-39:43})
+    \item \textbf{A`} 上主的榮耀充滿了會幕 (\bibleref{Ex 40})
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[allowframebreaks]
+  \frametitle{參考文獻}
+  \printbibliography
 \end{frame}
 
 \end{document}
