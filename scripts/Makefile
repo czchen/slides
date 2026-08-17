@@ -6,5 +6,5 @@ build: lint
 
 .PHONY: lint
 lint:
-	bibtex-tidy --modify --sort=key --sort-fields *.bib
+	bibtex-tidy *.bib --modify --sort=key --sort-fields
 	tex-fmt *.tex
