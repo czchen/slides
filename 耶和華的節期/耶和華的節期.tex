@@ -145,12 +145,27 @@
   \providebiblebook{#1}{Revelation}{啟示錄}
 }
 
-% Fix \textendash
+% Fix \textendash and Bible Gateway URL encoding
 \makeatletter
 \providebiblestyle{chinese-text}{\standardbiblestyle{chinese-text}
   {\ }{:}{; }{;}{,}{\textendash}
   {\brm@number@arabic}{\brm@number@arabic}
 {#1}{#2}{#3}}
+
+\ExplSyntaxOn
+\cs_new_protected:Npn \brm@fix@gateway@href #1#2#3#4#5 {
+  \tl_set:Nx \l_tmpa_tl { \brm@delegatestyle{#2}{#3}{#4}{#5} }
+  \regex_replace_all:nnN { http:// } { https:// } \l_tmpa_tl
+  \regex_replace_all:nnN { \s+ } { + } \l_tmpa_tl
+  \exp_args:NV \href \l_tmpa_tl { \brm@delegatestyle{#1}{#3}{#4}{#5} }
+}
+\ExplSyntaxOff
+
+\renewcommand*{\providebiblegatewaystyle}[3]{%
+  \providebiblestyle{#1}{%
+    \brm@fix@gateway@href{#3}{#2}{##1}{##2}{##3}%
+  }%
+}
 \makeatother
 
 \setupchinesebible{chinese-text}
@@ -160,7 +175,6 @@
 \setupchinesebible{chinese}
 
 \setbiblestyle{chinese}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Chinese short style
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
