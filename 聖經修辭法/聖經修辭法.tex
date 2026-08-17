@@ -1,0 +1,649 @@
+\documentclass{beamer}
+
+\usetheme{CambridgeUS}
+\usecolortheme{orchid}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Fonts
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{polyglossia}
+\setmainlanguage{chinese}
+\setotherlanguage{hebrew}
+\setotherlanguage{greek}
+\setotherlanguage{english}
+
+\usepackage{fontspec}
+\usefonttheme{professionalfonts}
+
+\newfontfamily\chinesefont{Noto Sans CJK TC}
+\newfontfamily\cjkfontsf{Noto Sans CJK TC}
+\newfontfamily\cjkfonttt{Noto Sans CJK TC}
+
+\newfontfamily\hebrewfont[Script=Hebrew]{David CLM}
+\newfontfamily\hebrewfontsf[Script=Hebrew]{David CLM}
+
+\newfontfamily\greekfont[Script=Greek]{Noto Sans}
+\newfontfamily\greekfontsf[Script=Greek]{Noto Sans}
+
+\newfontfamily\englishfont{Noto Sans}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% References
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[backend=biber,style=numeric,sorting=none,sortcites=true]{biblatex}
+\addbibresource{耶和華的節期.bib}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Bible References
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{bibleref-mouth}
+\providebiblebookalias{Psalms}{Psalm} % Support Psalm as alias
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Chinese style
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand*{\setupchinesebible}[1]{
+  % 五經
+  \providebiblebook{#1}{Genesis}{創世記}
+  \providebiblebook{#1}{Exodus}{出埃及記}
+  \providebiblebook{#1}{Leviticus}{利未記}
+  \providebiblebook{#1}{Numbers}{民數記}
+  \providebiblebook{#1}{Deuteronomy}{申命記}
+
+  % 前先知書
+  \providebiblebook{#1}{Joshua}{約書亞記}
+  \providebiblebook{#1}{Judges}{士師記}
+  \providebiblebook{#1}{ISamuel}{撒母耳記上}
+  \providebiblebook{#1}{IISamuel}{撒母耳記下}
+  \providebiblebook{#1}{IKings}{列王紀上}
+  \providebiblebook{#1}{IIKings}{列王紀下}
+
+  % 後先知書 - 大先知書
+  \providebiblebook{#1}{Isaiah}{以賽亞書}
+  \providebiblebook{#1}{Jeremiah}{耶利米書}
+  \providebiblebook{#1}{Ezekiel}{以西結書}
+
+  % 後先知書 - 十二先知書
+  \providebiblebook{#1}{Hosea}{何西阿書}
+  \providebiblebook{#1}{Joel}{約珥書}
+  \providebiblebook{#1}{Amos}{阿摩司書}
+  \providebiblebook{#1}{Obadiah}{俄巴底亞書}
+  \providebiblebook{#1}{Jonah}{約拿書}
+  \providebiblebook{#1}{Micah}{彌迦書}
+  \providebiblebook{#1}{Nahum}{那鴻書}
+  \providebiblebook{#1}{Habakkuk}{哈巴谷書}
+  \providebiblebook{#1}{Zephaniah}{西番雅書}
+  \providebiblebook{#1}{Haggai}{哈該書}
+  \providebiblebook{#1}{Zechariah}{撒迦利亞書}
+  \providebiblebook{#1}{Malachi}{瑪拉基書}
+
+  % 聖卷 - 詩歌書
+  \providebiblebook{#1}{Psalms}{詩篇}
+  \providebiblebook{#1}{Proverbs}{箴言}
+  \providebiblebook{#1}{Job}{約伯記}
+
+  % 聖卷 - 節期書
+  \providebiblebook{#1}{SongofSongs}{雅歌}
+  \providebiblebook{#1}{Ruth}{路得記}
+  \providebiblebook{#1}{Lamentations}{耶利米哀歌}
+  \providebiblebook{#1}{Ecclesiastes}{傳道書}
+  \providebiblebook{#1}{Esther}{以斯帖記}
+
+  % 聖卷
+  \providebiblebook{#1}{Daniel}{但以理書}
+  \providebiblebook{#1}{Ezra}{以斯拉記}
+  \providebiblebook{#1}{Nehemiah}{尼希米記}
+  \providebiblebook{#1}{IChronicles}{歷代志上}
+  \providebiblebook{#1}{IIChronicles}{歷代志下}
+
+  % 次經
+  \providebiblebook{#1}{Tobit}{多俾亞傳}
+  \providebiblebook{#1}{Judith}{友弟德傳}
+  \providebiblebook{#1}{IMaccabees}{瑪加伯上}
+  \providebiblebook{#1}{IIMaccabees}{瑪加伯下}
+  \providebiblebook{#1}{Wisdom}{智慧篇}
+  \providebiblebook{#1}{Ecclesiasticus}{德訓篇}
+  \providebiblebook{#1}{Baruch}{巴錄書}
+
+  % 福音書
+  \providebiblebook{#1}{Matthew}{馬太福音}
+  \providebiblebook{#1}{Mark}{馬可福音}
+  \providebiblebook{#1}{Luke}{路加福音}
+  \providebiblebook{#1}{John}{約翰福音}
+  \providebiblebook{#1}{Acts}{使徒行傳}
+
+  % 保羅書信
+  \providebiblebook{#1}{Romans}{羅馬書}
+  \providebiblebook{#1}{ICorinthians}{哥林多前書}
+  \providebiblebook{#1}{IICorinthians}{哥林多後書}
+  \providebiblebook{#1}{Galatians}{加拉太書}
+  \providebiblebook{#1}{Ephesians}{以弗所書}
+  \providebiblebook{#1}{Philippians}{腓立比書}
+  \providebiblebook{#1}{Colossians}{歌羅西書}
+  \providebiblebook{#1}{IThessalonians}{帖撒羅尼迦前書}
+  \providebiblebook{#1}{IIThessalonians}{帖撒羅尼迦後書}
+  \providebiblebook{#1}{ITimothy}{提摩太前書}
+  \providebiblebook{#1}{IITimothy}{提摩太後書}
+  \providebiblebook{#1}{Titus}{提多書}
+  \providebiblebook{#1}{Philemon}{腓利門書}
+  \providebiblebook{#1}{Hebrews}{希伯來書}
+
+  % 其他書信
+  \providebiblebook{#1}{James}{雅各書}
+  \providebiblebook{#1}{IPeter}{彼得前書}
+  \providebiblebook{#1}{IIPeter}{彼得後書}
+  \providebiblebook{#1}{IJohn}{約翰一書}
+  \providebiblebook{#1}{IIJohn}{約翰二書}
+  \providebiblebook{#1}{IIIJohn}{約翰三書}
+  \providebiblebook{#1}{Jude}{猶大書}
+
+  % 啟示錄
+  \providebiblebook{#1}{Revelation}{啟示錄}
+}
+
+% Fix \textendash
+\makeatletter
+\providebiblestyle{chinese-text}{\standardbiblestyle{chinese-text}
+  {\ }{:}{; }{;}{,}{\textendash}
+  {\brm@number@arabic}{\brm@number@arabic}
+{#1}{#2}{#3}}
+\makeatother
+
+\setupchinesebible{chinese-text}
+
+\providebiblegatewayurl{biblegateway-CUV}{CUV}
+\providebiblegatewaystyle{chinese}{biblegateway-CUV}{chinese-text}
+\setupchinesebible{chinese}
+
+\setbiblestyle{chinese}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Hebrew style
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand*{\setuphebrewbible}[1]{
+  % 五經
+  \providebiblebook{#1}{Genesis}{\texthebrew{בְּרֵאשִׁית}}
+  \providebiblebook{#1}{Exodus}{\texthebrew{שְׁמוֹת}}
+  \providebiblebook{#1}{Leviticus}{\texthebrew{וַיִּקְרָא}}
+  \providebiblebook{#1}{Numbers}{\texthebrew{בְּמִדְבַּר}}
+  \providebiblebook{#1}{Deuteronomy}{\texthebrew{דְּבָרִים}}
+
+  % 前先知書
+  \providebiblebook{#1}{Joshua}{\texthebrew{יְהוֹשֻׁעַ}}
+  \providebiblebook{#1}{Judges}{\texthebrew{שׁוֹפְטִים}}
+  \providebiblebook{#1}{ISamuel}{\texthebrew{שְׁמוּאֵל א}}
+  \providebiblebook{#1}{IISamuel}{\texthebrew{שְׁמוּאֵל ב}}
+  \providebiblebook{#1}{IKings}{\texthebrew{מְלָכִים א}}
+  \providebiblebook{#1}{IIKings}{\texthebrew{מְלָכִים ב}}
+
+  % 後先知書 - 大先知書
+  \providebiblebook{#1}{Isaiah}{\texthebrew{יְשַׁעְיָהוּ}}
+  \providebiblebook{#1}{Jeremiah}{\texthebrew{יִרְמְיָהוּ}}
+  \providebiblebook{#1}{Ezekiel}{\texthebrew{יְחֶזְקֵאל}}
+
+  % 後先知書 - 十二先知書
+  \providebiblebook{#1}{Hosea}{\texthebrew{הוֹשֵׁעַ}}
+  \providebiblebook{#1}{Joel}{\texthebrew{יוֹאֵל}}
+  \providebiblebook{#1}{Amos}{\texthebrew{עָמוֹס}}
+  \providebiblebook{#1}{Obadiah}{\texthebrew{עֹבַדְיָה}}
+  \providebiblebook{#1}{Jonah}{\texthebrew{יוֹנָה}}
+  \providebiblebook{#1}{Micah}{\texthebrew{מִיכָה}}
+  \providebiblebook{#1}{Nahum}{\texthebrew{נַחוּם}}
+  \providebiblebook{#1}{Habakkuk}{\texthebrew{חֲבַקּוּק}}
+  \providebiblebook{#1}{Zephaniah}{\texthebrew{צְפַנְיָה}}
+  \providebiblebook{#1}{Haggai}{\texthebrew{חַגַּי}}
+  \providebiblebook{#1}{Zechariah}{\texthebrew{זְכַרְיָה}}
+  \providebiblebook{#1}{Malachi}{\texthebrew{מַלְאָכִי}}
+
+  % 聖卷 - 詩歌書
+  \providebiblebook{#1}{Psalms}{\texthebrew{תְּהִלִּים}}
+  \providebiblebook{#1}{Proverbs}{\texthebrew{מִשְׁלֵי}}
+  \providebiblebook{#1}{Job}{\texthebrew{אִיּוֹב}}
+
+  % 聖卷 - 節期書
+  \providebiblebook{#1}{SongofSongs}{\texthebrew{שִׁיר הַשִּׁירִים}}
+  \providebiblebook{#1}{Ruth}{\texthebrew{רוּת}}
+  \providebiblebook{#1}{Lamentations}{\texthebrew{אֵיכָה}}
+  \providebiblebook{#1}{Ecclesiastes}{\texthebrew{קֹהֶלֶת}}
+  \providebiblebook{#1}{Esther}{\texthebrew{אֶסְתֵּר}}
+
+  % 聖卷
+  \providebiblebook{#1}{Daniel}{\texthebrew{דָּנִיֵּאל}}
+  \providebiblebook{#1}{Ezra}{\texthebrew{עֶזְרָא}}
+  \providebiblebook{#1}{Nehemiah}{\texthebrew{נְחֶמְיָה}}
+  \providebiblebook{#1}{IChronicles}{\texthebrew{דִּבְרֵי הַיָּמִים א}}
+  \providebiblebook{#1}{IIChronicles}{\texthebrew{דִּבְרֵי הַיָּמִים ב}}
+
+  % 次經
+  \providebiblebook{#1}{Tobit}{\texthebrew{טוֹבִית}}
+  \providebiblebook{#1}{Judith}{\texthebrew{יְהוּדִית}}
+  \providebiblebook{#1}{IMaccabees}{\texthebrew{מַכַּבִּים א}}
+  \providebiblebook{#1}{IIMaccabees}{\texthebrew{מַכַּבִּים ב}}
+  \providebiblebook{#1}{Wisdom}{\texthebrew{חָכְמַת שְׁלֹמֹה}}
+  \providebiblebook{#1}{Ecclesiasticus}{\texthebrew{בֶּן סִירָא}}
+  \providebiblebook{#1}{Baruch}{\texthebrew{בָּרוּךְ}}
+
+  % 福音書
+  \providebiblebook{#1}{Matthew}{\texthebrew{מַתִּתְיָהוּ}}
+  \providebiblebook{#1}{Mark}{\texthebrew{מַרְקוֹס}}
+  \providebiblebook{#1}{Luke}{\texthebrew{לוּקָאס}}
+  \providebiblebook{#1}{John}{\texthebrew{יוֹחָנָן}}
+  \providebiblebook{#1}{Acts}{\texthebrew{מַעֲשֵׂי הַשְּׁלִיחִים}}
+
+  % 保羅書信
+  \providebiblebook{#1}{Romans}{\texthebrew{אִגֶּרֶת לָרוֹמִיִּים}}
+  \providebiblebook{#1}{ICorinthians}{\texthebrew{אִגֶּרֶת רִאשׁוֹנָה לָקוֹרִנְתִּיִּים}}
+  \providebiblebook{#1}{IICorinthians}{\texthebrew{אִגֶּרֶת שְׁנִיָּה לָקוֹרִנְתִּיִּים}}
+  \providebiblebook{#1}{Galatians}{\texthebrew{אִגֶּרֶת לַגַּלָטִים}}
+  \providebiblebook{#1}{Ephesians}{\texthebrew{אִגֶּרֶת לָאֶפֶסִיִּים}}
+  \providebiblebook{#1}{Philippians}{\texthebrew{אִגֶּרֶת לַפִילִפִּיִּים}}
+  \providebiblebook{#1}{Colossians}{\texthebrew{אִגֶּרֶת לַקּוֹלוֹסִיִּים}}
+  \providebiblebook{#1}{IThessalonians}{\texthebrew{אִגֶּרֶת רִאשׁוֹנָה לַתֶּסָּלוֹנִיקִים}}
+  \providebiblebook{#1}{IIThessalonians}{\texthebrew{אִגֶּרֶת שְׁנִיָּה לַתֶּסָּלוֹנִיקִים}}
+  \providebiblebook{#1}{ITimothy}{\texthebrew{אִגֶּרֶת רִאשׁוֹנָה לְטִימוֹתֵיאוֹס}}
+  \providebiblebook{#1}{IITimothy}{\texthebrew{אִגֶּרֶת שְׁנִיָּה לְטִימוֹתֵיאוֹס}}
+  \providebiblebook{#1}{Titus}{\texthebrew{אִגֶּרֶת לְטִיטוֹס}}
+  \providebiblebook{#1}{Philemon}{\texthebrew{אִגֶּרֶת לְפִילֵימוֹן}}
+  \providebiblebook{#1}{Hebrews}{\texthebrew{אִגֶּרֶת לָעִבְרִיִּים}}
+
+  % 其他書信
+  \providebiblebook{#1}{James}{\texthebrew{אִגֶּרֶת יַעֲקֹב}}
+  \providebiblebook{#1}{IPeter}{\texthebrew{אִגֶּרֶת רִאשׁוֹנָה לְפֶטְרוֹס}}
+  \providebiblebook{#1}{IIPeter}{\texthebrew{אִגֶּרֶת שְׁנִיָּה לְפֶטְרוֹס}}
+  \providebiblebook{#1}{IJohn}{\texthebrew{אִגֶּרֶת רִאשׁוֹנָה לְיוֹחָנָן}}
+  \providebiblebook{#1}{IIJohn}{\texthebrew{אִגֶּרֶת שְׁנִיָּה לְיוֹחָנָן}}
+  \providebiblebook{#1}{IIIJohn}{\texthebrew{אִגֶּרֶת שְׁלִישִׁית לְיוֹחָנָן}}
+  \providebiblebook{#1}{Jude}{\texthebrew{אִגֶּרֶת יְהוּדָה}}
+
+  % 啟示錄
+  \providebiblebook{#1}{Revelation}{\texthebrew{הִתְגַּלּוּת}}
+}
+
+% Fix \textendash
+\makeatletter
+\providebiblestyle{hebrew-text}{\standardbiblestyle{hebrew-text}
+  {\ }{:}{; }{;}{,}{\textendash}
+  {\hebrewnumeral}{\hebrewnumeral}
+{#1}{#2}{#3}}
+\makeatother
+
+\setuphebrewbible{hebrew-text}
+
+\providebiblegatewayurl{biblegateway-WLC}{WLC}
+\providebiblegatewaystyle{hebrew}{biblegateway-WLC}{hebrew-text}
+\setuphebrewbible{hebrew}
+
+\makeatletter
+\newcommand{\biblerefhebrew}[1]{\brm@bibleref{hebrew}{#1}}
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Table
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{booktabs}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Macros
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\topic}[1]{
+  \begin{frame}
+    \centering
+    \vspace*{1cm}
+    {\fontsize{40}{48}\selectfont #1\par}
+    \vfill
+  \end{frame}
+}
+
+\newcommand{\question}[1]{
+  \begin{frame}{問題}
+    \centering
+    \vspace*{1cm}
+    \huge #1？\par
+    \vfill
+  \end{frame}
+}
+
+\newcommand{\conclusion}[2]{
+  \begin{frame}
+    \centering
+    \vspace*{1cm}
+    {\fontsize{40}{48}\selectfont #1 \textemdash #2\par}
+    \vfill
+  \end{frame}
+}
+
+\newcommand{\parvspace}{\par\vspace{0.5em}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Metadata
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{聖經修辭法}
+\subtitle{Biblical Rhetoric}
+\date{today}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Slides
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{大綱}
+  \tableofcontents
+\end{frame}
+
+\section{簡介}
+\topic{簡介}
+\begin{frame}{什麼是修辭法？}
+  \begin{itemize}
+    \item 定義：使用非字面（字面以外）或特別的語言結構，以加強表達效果或刻畫特定意象。
+    \item 聖經語言的豐富性：作者透過各種修辭技巧傳達神聖啟示與情感。
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{為何需要認識聖經的修辭法？}
+  \begin{itemize}
+    \item 避免極端字面主義 (Extreme Literalism)：理解象徵與比喻，防範誤解聖經本意。
+    \item 尋找作者原意：正確辨析文體與表達手法，精準掌握原作者要傳遞的核心信息。
+    \item 體會文學美感與靈性震撼：領會詩歌與預言中深刻的意象與感染力。
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{聖經修辭學的核心目的}
+  \begin{itemize}
+    \item 促進口傳記憶 (Facilitate Oral Memorization)：\\
+      利用對稱、平行與韻律結構，便於古代口傳文化中的吟誦與記憶。
+    \item 突顯神學高峰 (Highlight Theological Climax)：\\
+      透過交叉對稱 (Chiasmus) 與漸層結構，將最重要的神學訊息置於核心焦點。
+    \item 觸動聽覺想像 (Engage the Auditory Imagination)：\\
+      運用生動意象、聲韻與修飾技巧，激發朗讀與聆聽時的感官共鳴。
+    \item 展現救贖歷史連貫性 (Demonstrate Salvation History Continuity)：\\
+      藉由預表與敘事模式，彰顯貫穿新舊約的神聖救贖計畫。
+  \end{itemize}
+\end{frame}
+
+\section{結構與篇章模式 (Structural and Compositional Patterns)}
+\topic{結構與篇章模式}
+\begin{frame}{平行體 (Parallelism)}
+  \begin{itemize}
+    \item 定義：希伯來詩歌的核心結構，兩行或多行詩句在概念或結構上互相呼應。
+    \item 主要類型：
+      \begin{itemize}
+        \item 同義平行 (Synonymous Parallelism)：後句重述或加強前句概念
+        \item 對照平行 (Antithetic Parallelism)：後句與前句形成對比
+        \item 綜合平行 (Synthetic Parallelism)：後句補充、延伸或發展前句
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{交叉對稱 (Chiasmus)}
+  \begin{itemize}
+    \item 定義：倒置對稱結構（如 A-B-B'-A' 或 A-B-C-B'-A'）。
+    \item 特點：結構中心（如 C）通常是段落的核心焦點或轉折點。
+    \item 經文範例與應用：
+      \begin{itemize}
+        \item 待補充經文與解析
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{首尾呼應 (Inclusio)}
+  \begin{itemize}
+    \item 定義：在一個段落或章節的開頭與結尾使用相同的詞彙、短語或主題。
+    \item 特點：如同文字括號，劃定文學單元的邊界並強調核心主題。
+    \item 經文範例與應用：
+      \begin{itemize}
+        \item 待補充經文與解析
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{兩極表達法 (Merism)}
+  \begin{itemize}
+    \item 定義：使用兩個對立或相對極端的詞彙，來代表包含其間的一切整體。
+    \item 特點：例如「天與地」、「始與終」、「坐下與起來」。
+    \item 經文範例與應用：
+      \begin{itemize}
+        \item 待補充經文與解析
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{離合詩/藏頭詩 (Acrostic)}
+  \begin{itemize}
+    \item 定義：依照希伯來字母順序安排詩句開頭字母的結構。
+    \item 特點：展現結構的完整性與韻律感（例如詩篇119篇、詩篇34篇、箴言31章）。
+    \item 經文範例與應用：
+      \begin{itemize}
+        \item 待補充經文與解析
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{數字修辭：七的密碼 (Seven Code)}
+  \begin{itemize}
+    \item 定義：神學上使用數字「七」象徵完全、神聖與圓滿。
+    \item 特點：在聖經敘述、詩歌與啟示文學中作為結構與象徵語言。
+    \item 經文範例與應用：
+      \begin{itemize}
+        \item 待補充經文與解析
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\section{比喻與修辭格 (Figurative and Tropological Figures)}
+\topic{比喻與修辭格}
+\begin{frame}{明喻 (Simile)}
+  \begin{itemize}
+    \item 定義：顯式的比較，通常使用「如」、「像」、「好比」等連接詞。
+    \item 特點：明確指出兩事物之間的相似之處。
+    \item 經文範例與應用：
+      \begin{itemize}
+        \item 待補充經文與解析
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{暗喻 (Metaphor)}
+  \begin{itemize}
+    \item 定義：隱式的比較，直接將一事物稱為另一事物（常使用「是」）。
+    \item 特點：不使用比較連接詞，將兩者的特質直接連結。
+    \item 經文範例與應用：
+      \begin{itemize}
+        \item 待補充經文與解析
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{借喻 (Hypocatastasis)}
+  \begin{itemize}
+    \item 定義：直接以替代事物稱呼對象，完全不提及被比較的原對象與比較詞。
+    \item 特點：比暗喻更為強烈、生動且具暗示性。
+    \item 經文範例與應用：
+      \begin{itemize}
+        \item 待補充經文與解析
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{換喻/轉喻 (Metonymy)}
+  \begin{itemize}
+    \item 定義：以與原事物有密切相關的詞彙來替代原事物（如以原因代結果、以容器代盛物）。
+    \item 特點：利用關聯性來簡練表達概念。
+    \item 經文範例與應用：
+      \begin{itemize}
+        \item 待補充經文與解析
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{提喻 (Synecdoche)}
+  \begin{itemize}
+    \item 定義：以局部代表整體，或以整體代表局部。
+    \item 特點：強調特定部分或擴大代表範圍。
+    \item 經文範例與應用：
+      \begin{itemize}
+        \item 待補充經文與解析
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{擬人 (Personification)}
+  \begin{itemize}
+    \item 定義：賦予無生命之物、自然界或抽象概念人的行為、情感與特質。
+    \item 特點：使敘述與詩歌更具生動性與感染力。
+    \item 經文範例與應用：
+      \begin{itemize}
+        \item 待補充經文與解析
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{擬神/神人同形同性 (Anthropomorphism)}
+  \begin{itemize}
+    \item 定義：使用人類的身體器官、情感或動作來描述神的屬性與作為。
+    \item 特點：幫助有限的人類理解無限的神（例如神的眼、神的手、神的後悔）。
+    \item 經文範例與應用：
+      \begin{itemize}
+        \item 待補充經文與解析
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{誇飾 (Hyperbole)}
+  \begin{itemize}
+    \item 定義：有意的誇大或過度強調，以突出強烈的感情或印象，而非提供嚴格字面數據。
+    \item 特點：聽眾明白其為強調手法而非字面數字。
+    \item 經文範例與應用：
+      \begin{itemize}
+        \item 待補充經文與解析
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{反諷 (Irony)}
+  \begin{itemize}
+    \item 定義：字面意義與真正意圖相反，用以嘲諷、警惕或深刻揭露盲點。
+    \item 特點：透過反差加深讀者印象與反思。
+    \item 經文範例與應用：
+      \begin{itemize}
+        \item 待補充經文與解析
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\section{聲音、詩歌與風格修辭 (Sonic, Poetic and Stylistic Devices)}
+\topic{聲音、詩歌與風格修辭}
+\begin{frame}{頭韻 (Alliteration)}
+  \begin{itemize}
+    \item 定義：在連續或相近的詞彙中使用相同的子音或輔音開頭。
+    \item 特點：增加朗讀時的音韻美與記憶點（希伯來語/希臘語原文文學技巧）。
+    \item 經文範例與應用：
+      \begin{itemize}
+        \item 待補充經文與解析
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{諧音雙關 (Paronomasia / Wordplay)}
+  \begin{itemize}
+    \item 定義：利用字詞發音相似或相同但意義不同的特性，達到雙關或深刻印象的效果。
+    \item 特點：常見於希伯來先知書的宣告與詩歌（如「杏樹枝」與「留意」）。
+    \item 經文範例與應用：
+      \begin{itemize}
+        \item 待補充經文與解析
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{疊句與複歌 (Refrain)}
+  \begin{itemize}
+    \item 定義：在詩篇或章節中重複出現的句子或段落。
+    \item 特點：貫穿全篇主題、加強詩歌節奏並引導會眾回應。
+    \item 經文範例與應用：
+      \begin{itemize}
+        \item 待補充經文與解析
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{省略與呼告 (Ellipsis and Apostrophe)}
+  \begin{itemize}
+    \item 定義：
+      \begin{itemize}
+        \item 省略 (Ellipsis)：省去文法上必需但上下文可推知的字詞，使語氣更為精煉緊湊。
+        \item 呼告 (Apostrophe)：轉向呼喚不在現場的人、抽象概念或無生命事物。
+      \end{itemize}
+    \item 經文範例與應用：
+      \begin{itemize}
+        \item 待補充經文與解析
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\section{敘事、預表與救贖模式 (Narrative, Typological and Redemptive Patterns)}
+\topic{敘事、預表與救贖模式}
+\begin{frame}{預表論 (Typology)}
+  \begin{itemize}
+    \item 定義：舊約中的歷史人物、事件、制度（Type），在神的救贖計劃中預先指向新約基督與救恩的實體（Antitype）。
+    \item 特點：超越單純比喻，具備歷史性與救贖歷史的延伸應驗。
+    \item 經文範例與應用：
+      \begin{itemize}
+        \item 待補充經文與解析
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{影子與本體 (Shadow and Substance)}
+  \begin{itemize}
+    \item 定義：律法與舊約儀式作為將來美事的影子，基督與其救贖才是本體。
+    \item 特點：常見於希伯來書與保羅書信的解經模式。
+    \item 經文範例與應用：
+      \begin{itemize}
+        \item 待補充經文與解析
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{預言架構與應驗 (Prophetic Pattern and Fulfillment)}
+  \begin{itemize}
+    \item 定義：先知宣告的近期歷史應驗與末世/彌賽亞終極應驗的多重疊層模式 (Multiple Fulfillment)。
+    \item 特點：兼具歷史脈絡與救贖論高度。
+    \item 經文範例與應用：
+      \begin{itemize}
+        \item 待補充經文與解析
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{救贖歷史敘事 (Redemptive-Historical Narrative Arc)}
+  \begin{itemize}
+    \item 定義：從創造、墮落、救贖到圓滿（Creation, Fall, Redemption, Restoration）的宏大敘事結構。
+    \item 特點：作為理解整部聖經文學與各卷書修辭的總體脈絡。
+    \item 經文範例與應用：
+      \begin{itemize}
+        \item 待補充經文與解析
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\section{結論}
+\topic{結論}
+\begin{frame}{總結：解經的平衡}
+  \begin{itemize}
+    \item 字面與修辭的平衡：按著正意分解真理，既不隨意靈意化，也不盲目字面化。
+    \item 重視原作者意圖：尊重聖經文學體裁與表達工具，真確明白神的啟示。
+  \end{itemize}
+\end{frame}
+\end{document}
